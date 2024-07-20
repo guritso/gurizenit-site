@@ -1,0 +1,56 @@
+@import url("../css/styles.css");
+
+body {
+  overflow: hidden;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+}
+#console-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  scroll-behavior: smooth;
+}
+/* scrollbar background color and bar color*/
+::-webkit-scrollbar {
+  background-color: #212121;
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: seagreen
+}
+
+.scroll-container {
+  scrollbar-width: thin;
+  scrollbar-color: seagreen #212121;
+}
+
+h1 {
+  color: #e0e0e0;
+  font-size: 2rem;
+}
+
+.top-bar {
+  background-color: seagreen;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+p {
+  margin: 10px;
+  color: #e0e0e0;
+  font-size: 1rem;
+}
+
+#console-p {
+  margin-bottom: 2px;
+  margin-top: 2px;
+  color: seagreen;
+}
