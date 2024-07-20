@@ -25,11 +25,12 @@ h1 {
     margin: 0;
 }
 
-p {
+#intro-text {
     font-size: 1.5rem;
     margin-top: 10px;
+    margin-bottom: 40px;
     overflow: hidden;
-    border-right: 0.15em solid palegreen;
+    border-right: 0.15em solid green;
     white-space: nowrap;
     animation: typing 3s steps(30, end), blink-caret 0.5s step-end infinite;
 }
@@ -54,4 +55,52 @@ p {
     50% {
         border-color: palegreen
     }
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.button {
+    text-decoration: none;
+    border: 1px solid;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#console-link {
+    color: green;
+    text-decoration: none;
+    border-color: green;
+}
+
+#console-link:hover {
+    background-color: green;
+    color: #e0e0e0;
+}
+
+#github-link {
+    color: #e0e0e0;
+    text-decoration: none;
+    border-color: #e0e0e0;
+}
+
+#github-link:hover {
+    background-color: #e0e0e0;
+    color: #121212;
+}
+
+#mal-link {
+    color: blue;
+    text-decoration: none;
+    border-color: blue;
+}
+
+#mal-link:hover {
+    background-color: blue;
+    color: #e0e0e0;
 }
