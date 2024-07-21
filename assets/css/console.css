@@ -6,7 +6,10 @@ body {
   justify-content: start;
   flex-direction: column;
 }
+
 #console-container {
+  padding: 10px;
+  word-wrap: break-word;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -15,19 +18,19 @@ body {
   flex-direction: column;
   text-align: left;
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 /* scrollbar background color and bar color*/
 ::-webkit-scrollbar {
-  background-color: #212121;
   width: 10px;
 }
 ::-webkit-scrollbar-thumb {
   background-color: seagreen
 }
-
-.scroll-container {
+/* scrollbar firefox */
+html {
   scrollbar-width: thin;
-  scrollbar-color: seagreen #212121;
+  scrollbar-color: #2e8b57 transparent;
 }
 
 h1 {
@@ -49,8 +52,9 @@ p {
   font-size: 1rem;
 }
 
-#console-p {
-  margin-bottom: 2px;
-  margin-top: 2px;
+.container div {
+  margin: 0;
+  line-height: 1.3;
+  display: inline;
   color: seagreen;
 }

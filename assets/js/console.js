@@ -18,10 +18,10 @@ async function fetchLogs() {
   for (const [index, log] of data.logs.entries()) {
     if (logsHistory[index] !== log) {
       logsHistory[index] = log;
-      const p = document.createElement("p");
-      p.id = "console-p";
-      p.innerText = log;
-      consoleContainer.appendChild(p);
+      const div = document.createElement("div");
+      div.id = "console-p";
+      div.innerText = log;
+      consoleContainer.appendChild(div);
       consoleContainer.scrollTop = consoleContainer.scrollHeight;
     }
     lines.innerText = `lines: ${data.logs.length}`;
