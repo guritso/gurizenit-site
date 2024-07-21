@@ -33,11 +33,6 @@ html {
   scrollbar-color: #2e8b57 transparent;
 }
 
-h1 {
-  color: #e0e0e0;
-  font-size: 2rem;
-}
-
 .top-bar {
   background-color: seagreen;
   display: flex;
@@ -53,6 +48,8 @@ p {
 }
 
 .container div {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
   margin: 0;
   line-height: 1.3;
   display: inline;
