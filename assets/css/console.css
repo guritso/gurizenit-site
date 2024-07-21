@@ -70,7 +70,16 @@ p {
 }
 
 .material-symbols-outlined {
+  cursor: pointer;
   text-decoration: none;
   margin: 10px;
   color: #e0e0e0;
+}
+
+.material-symbols-outlined:hover {
+  color: #50a786;
+}
+
+.material-symbols-outlined:active {
+  color: #8df3cc;
 }
