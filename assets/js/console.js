@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         fetchLogs(resolve);
       });
     });
-  }, 1);
+  }, 500);
 
   refreshButton.addEventListener("click", async () => {
     consoleContainer.innerHTML = "";
