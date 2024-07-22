@@ -8,17 +8,26 @@ const apiFetch = {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${options.token}`,
       },
-    });
-    if (!response?.ok) {
-      throw new Error(`HTTP error! status: ${response?.status}`);
+    }).catch(() => {});
+
+    if (!response) {
+      return {
+        status: 500,
+        message: "Internal Server Error",
+      };
     }
 
     const data = await response.json();
 
-    if (data.message) {
-      console.log(data.message);
+    if (!response.ok) {
+  
+      return {
+        status: response.status,
+        message: data.message || response.statusText,
+      };
+    } else {
+      return data;
     }
-    return data;
   },
 };
 

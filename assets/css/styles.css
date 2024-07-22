@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&display=swap');
 
+:root {
+    --primary-color: #156d57;
+    --secondary-color: #e0e0e0;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -13,9 +18,8 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #121212;
-    color: #e0e0e0;
+    color: var(--secondary-color);
 }
-
 .container {
     text-align: center;
 }
@@ -61,7 +65,6 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
     gap: 10px;
 }
 
@@ -73,24 +76,24 @@ h1 {
 }
 
 #console-link {
-    color: green;
+    color: var(--primary-color);
     text-decoration: none;
-    border-color: green;
+    border-color: var(--primary-color);
 }
 
 #console-link:hover {
-    background-color: green;
-    color: #e0e0e0;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
 }
 
 #github-link {
-    color: #e0e0e0;
+    color: var(--secondary-color);
     text-decoration: none;
-    border-color: #e0e0e0;
+    border-color: var(--secondary-color);
 }
 
 #github-link:hover {
-    background-color: #e0e0e0;
+    background-color: var(--secondary-color);
     color: #121212;
 }
 
@@ -102,5 +105,5 @@ h1 {
 
 #mal-link:hover {
     background-color: blue;
-    color: #e0e0e0;
+    color: var(--secondary-color);
 }

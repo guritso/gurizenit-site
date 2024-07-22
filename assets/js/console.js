@@ -1,74 +1,71 @@
-const status = document.getElementById("status");
-const ram = document.getElementById("ram");
-const lines = document.getElementById("lines");
-const consoleContainer = document.getElementById("console-container");
-const refreshButton = document.getElementById("refresh");
-const noLogs = document.getElementById("no-logs");
-const apiUrl = "https://api.gurizenit.site/v1/logs";
+import apiFetch from "./apiFetch.js";
 
-let PROMISE = Promise.resolve(true);
-let LOGS_HISTORY = [];
-let COOLDOWN = 5000;
+const lines_count = document.getElementById("lines_count");
+const lock_button = document.getElementById("lock_button");
+const refresh_button = document.getElementById("refresh_button");
+const auth_input = document.getElementById("auth_input");
 
-document.addEventListener("DOMContentLoaded", async function () {
-  setInterval(() => {
-    PROMISE = PROMISE.then(() => {
-      return new Promise((resolve) => {
-        fetchLogs(resolve);
-      });
-    });
-  }, 500);
+let AUTH_KEY;
+let ANIMATION_DURATION = 300;
 
-  refreshButton.addEventListener("click", async () => {
-    consoleContainer.innerHTML = "";
-    consoleContainer.appendChild(noLogs);
-    noLogs.style.display = "flex";
-    LOGS_HISTORY = [];
-    fetchLogs();
-  });
+document.addEventListener("DOMContentLoaded", () => {
+  lock_button.addEventListener("click", handleLockButtonClick);
+  refresh_button.addEventListener("click", handleRefreshButtonClick);
+  auth_input.addEventListener("input", handleAuthInputChange);
+  auth_input.addEventListener("keydown", handleAuthInputKeydown);
+  auth_input.addEventListener("blur", handleAuthInputFocusOut);
 });
 
-let resolveArchive = false;
+async function handleLockButtonClick() {
+  lock_button.style.display = "none";
+  auth_input.style.display = "flex";
 
-async function fetchLogs(resolve) {
-  const response = await fetch(apiUrl).catch(() => {});
+  await auth_input.animate(
+    [{ transform: "translateX(200%)" }, { transform: "translateX(0)" }],
+    ANIMATION_DURATION
+  ).finished;
 
-  resolveArchive = resolve ? resolve : resolveArchive;
+  auth_input.focus();
+}
 
-  if (!resolve) {
-    COOLDOWN = 5000;
-    return resolveArchive();
+async function handleRefreshButtonClick() {
+  const data = await fetchLogs();
+  console.log(data);
+}
+
+async function handleAuthInputChange() {
+  AUTH_KEY = auth_input.value;
+  console.log(await fetchLogs());
+}
+
+function handleAuthInputFocusOut() {
+  AUTH_KEY = auth_input.value;
+  AuthInputCloseAnimation();
+}
+
+function handleAuthInputKeydown(e) {
+  const INPUT_KEYS = ["Enter", "Escape"];
+
+  if (INPUT_KEYS.includes(e.key)) {
+    AUTH_KEY = auth_input.value;
+    AuthInputCloseAnimation();
   }
+}
 
-  if (!response) {
-    console.log(
-      `No response from API, trying again in ${COOLDOWN / 1000} seconds`
-    );
-    setTimeout(resolve, COOLDOWN);
-    COOLDOWN = COOLDOWN + 5000;
-    return;
-  }
-  
-  noLogs.style.display = "none";
-  COOLDOWN = 5000;
+async function AuthInputCloseAnimation() {
+  await auth_input.animate(
+    [{ transform: "translateX(0)" }, { transform: "translateX(200%)" }],
+    ANIMATION_DURATION
+  ).finished;
+  auth_input.style.display = "none";
+  lock_button.style.display = "flex";
+}
 
-  const data = (await response.json()) || { logs: [] };
+async function fetchLogs() {
+  const data = await apiFetch.get({
+    endpoint: "logs",
+    token: AUTH_KEY,
+  });
 
-  if (data.logs.length === LOGS_HISTORY.length) {
-    return resolve();
-  }
-
-  for (const [index, log] of data.logs.entries()) {
-    if (LOGS_HISTORY[index] !== log) {
-      LOGS_HISTORY[index] = log;
-      const div = document.createElement("div");
-      div.id = "console-p";
-      div.innerText = log;
-      consoleContainer.appendChild(div);
-      consoleContainer.scrollTop = consoleContainer.scrollHeight;
-    }
-    lines.innerText = `lines: ${data.logs.length}`;
-  }
-
-  resolve();
+  return data;
 }

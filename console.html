@@ -8,14 +8,21 @@
   </head>
   <body>
     <div class="top-bar">
-      <p id="lines">lines: 0</p>
-      <p id="status">status: N/A</p>
-      <p id="ram">ram: N/A</p>
-      <a id="refresh" class="material-symbols-outlined">refresh</a>
+      <p id="lines_count">lines: 0</p>
+      <div class="right-buttons">
+        <input
+          type="password"
+          id="auth_input"
+          placeholder="authenticator key"
+          style="display: none"
+        />
+        <a id="lock_button" class="material-symbols-outlined">lock</a>
+        <a id="refresh_button" class="material-symbols-outlined">refresh</a>
+      </div>
     </div>
     <div class="container" id="console-container">
-      <div id="no-logs">(ಥ _ ಥ)<br />empty</div>
+      <div id="empty_logs">(ಥ _ ಥ)<br />empty</div>
     </div>
-    <script src="../assets/js/console.js"></script>
+    <script type="module" src="../assets/js/console.js"></script>
   </body>
 </html>
