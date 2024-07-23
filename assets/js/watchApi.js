@@ -3,7 +3,7 @@ import { updateLogs } from "./container.js";
 
 const auth_status = document.getElementById("auth_status");
 
-const INTERVAL = 500;
+const INTERVAL = 1000;
 let AUTH_KEY = "";
 
 const setAuthKey = (authKey) => {
