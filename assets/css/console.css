@@ -102,6 +102,12 @@ p {
   color: #8df3cc !important;
 }
 
+#sync_button {
+  cursor:auto;
+  color: #00ff00 !important;
+
+}
+
 /* Text input for auth */
 #auth_input {
   font-family: "Courier New", Courier, monospace;

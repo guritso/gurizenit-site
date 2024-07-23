@@ -3,6 +3,7 @@ import { updateLogs } from "./container.js";
 
 const lock_button = document.getElementById("lock_button");
 const auth_status = document.getElementById("auth_status");
+const sync_button = document.getElementById("sync_button");
 
 const INTERVAL = 1000;
 let AUTH_KEY = "";
@@ -23,6 +24,14 @@ const watchApi = () => {
     if (data.logs) {
       updateLogs(data);
       lock_button.style.color = "#00ff00";
+      sync_button.style.display = "block";
+
+      sync_button.animate(
+        [{ opacity: "1" }, { opacity: "0" }],
+        100
+      );
+      
+      if (auth_status.style.display === "none") return;
 
       auth_status
         .animate(
@@ -36,6 +45,7 @@ const watchApi = () => {
       auth_status.textContent = data?.message;
       auth_status.style.position = "absolute";
       auth_status.style.bottom = "0";
+      sync_button.style.display = "none";
 
       if (auth_status.style.display === "none") {
         auth_status.style.display = "block";
