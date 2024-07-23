@@ -1,6 +1,7 @@
 import apiFetch from "./apiFetch.js";
+import { updateLogs, clearLogs } from "./container.js";
+import { watchApi, setAuthKey } from "./watchApi.js";
 
-const lines_count = document.getElementById("lines_count");
 const lock_button = document.getElementById("lock_button");
 const refresh_button = document.getElementById("refresh_button");
 const auth_input = document.getElementById("auth_input");
@@ -9,6 +10,14 @@ let AUTH_KEY;
 let ANIMATION_DURATION = 300;
 
 document.addEventListener("DOMContentLoaded", () => {
+  fetchLogs().then((data) => {  
+    if (!data?.message) {
+      updateLogs(data);
+    }
+  });
+
+  watchApi();
+
   lock_button.addEventListener("click", handleLockButtonClick);
   refresh_button.addEventListener("click", handleRefreshButtonClick);
   auth_input.addEventListener("input", handleAuthInputChange);
@@ -29,17 +38,22 @@ async function handleLockButtonClick() {
 }
 
 async function handleRefreshButtonClick() {
-  const data = await fetchLogs();
-  console.log(data);
+  clearLogs();
+  fetchLogs().then((data) => {  
+    if (!data?.message) {
+      updateLogs(data);
+    }
+  });
 }
 
 async function handleAuthInputChange() {
   AUTH_KEY = auth_input.value;
-  console.log(await fetchLogs());
+  setAuthKey(AUTH_KEY);
 }
 
 function handleAuthInputFocusOut() {
   AUTH_KEY = auth_input.value;
+  setAuthKey(AUTH_KEY);
   AuthInputCloseAnimation();
 }
 
@@ -48,6 +62,7 @@ function handleAuthInputKeydown(e) {
 
   if (INPUT_KEYS.includes(e.key)) {
     AUTH_KEY = auth_input.value;
+    setAuthKey(AUTH_KEY);
     AuthInputCloseAnimation();
   }
 }

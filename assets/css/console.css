@@ -13,6 +13,7 @@ body {
   flex-direction: column;
 }
 
+/* Console container that contains all the logs */
 #console-container {
   padding: 10px;
   word-wrap: break-word;
@@ -53,7 +54,7 @@ p {
   color: var(--secondary-color);
   font-size: 1rem;
 }
-
+/* Text log that is displayed in the console */
 .container div {
   font-family: "Courier New", Courier, monospace;
   font-size: 1rem;
@@ -62,8 +63,9 @@ p {
   display: inline;
   color: var(--primary-color);
 }
-
+/* Text that is displayed when there are no logs */
 #empty_logs {
+  user-select: none;
   font-family: "Courier New", Courier, monospace;
   color: var(--secondary-color);
   font-size: 40px;
@@ -75,13 +77,16 @@ p {
   align-items: center;
 }
 
+/* Right buttons */
 .right-buttons {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
+/* Material icons buttons */
 .material-symbols-outlined {
+  user-select: none;
   cursor: pointer;
   text-decoration: none;
   margin: 10px;
@@ -96,6 +101,7 @@ p {
   color: #8df3cc;
 }
 
+/* Text input for auth */
 #auth_input {
   font-family: "Courier New", Courier, monospace;
   color: var(--secondary-color);
@@ -115,4 +121,13 @@ p {
   outline: none;
   border-color: var(--secondary-color);
   background-color: #155e4c;
+}
+/* Auth status text */
+#auth_status {
+  width: 100%;
+  text-shadow: 1px 1px 1px #5f3f3f;
+  font-family: cursive;
+  color: #c24747;
+  font-size: 0.8rem;
+  margin: 10px;
 }
