@@ -3,82 +3,59 @@
 :root {
     --primary-color: #156d57;
     --secondary-color: #e0e0e0;
+    --background-color: #121212;
+    --blue-color: #2a4285;
 }
 
 body {
     margin: 0;
     padding: 0;
     font-family: "Noto Sans Mono", monospace;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
+    background-color: var(--background-color);
+    color: var(--secondary-color);
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    padding: 20px;
+    text-align: center;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #121212;
-    color: var(--secondary-color);
-}
-.container {
-    text-align: center;
 }
 
 h1 {
-    font-size: 4rem;
-    margin: 0;
+    font-size: 3rem;
+    margin-bottom: 20px;
 }
 
-#intro-text {
-    font-size: 1.5rem;
-    margin-top: 10px;
-    margin-bottom: 40px;
-    overflow: hidden;
-    border-right: 0.15em solid green;
-    white-space: nowrap;
-    animation: typing 3s steps(30, end), blink-caret 0.5s step-end infinite;
+p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
 }
 
-@keyframes typing {
-    from {
-        width: 0
-    }
-
-    to {
-        width: 100%
-    }
-}
-
-@keyframes blink-caret {
-
-    from,
-    to {
-        border-color: transparent
-    }
-
-    50% {
-        border-color: palegreen
-    }
-}
-
-.buttons-container {
-    display: flex;
+#buttons-container {
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
 }
 
 .button {
     text-decoration: none;
-    border: 1px solid;
-    padding: 10px;
+    padding: 5px 10px;
     border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 #console-link {
     color: var(--primary-color);
-    text-decoration: none;
-    border-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
 }
 
 #console-link:hover {
@@ -88,22 +65,20 @@ h1 {
 
 #github-link {
     color: var(--secondary-color);
-    text-decoration: none;
-    border-color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
 }
 
 #github-link:hover {
     background-color: var(--secondary-color);
-    color: #121212;
+    color: var(--background-color);
 }
 
 #mal-link {
-    color: blue;
-    text-decoration: none;
-    border-color: blue;
+    color: var(--blue-color);
+    border: 1px solid var(--blue-color);
 }
 
 #mal-link:hover {
-    background-color: blue;
+    background-color: var(--blue-color);
     color: var(--secondary-color);
 }
