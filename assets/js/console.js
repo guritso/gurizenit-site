@@ -10,13 +10,13 @@ let AUTH_KEY;
 let ANIMATION_DURATION = 300;
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetchLogs().then((data) => {  
+  watchApi();
+
+  fetchLogs().then((data) => {
     if (!data?.message) {
       updateLogs(data);
     }
   });
-
-  watchApi();
 
   lock_button.addEventListener("click", handleLockButtonClick);
   refresh_button.addEventListener("click", handleRefreshButtonClick);
@@ -38,8 +38,13 @@ async function handleLockButtonClick() {
 }
 
 async function handleRefreshButtonClick() {
+  // rotate to the right
+  refresh_button.animate(
+    [{ transform: "rotate(0deg)" }, { transform: "rotate(360deg)" }],
+    ANIMATION_DURATION
+  );
   clearLogs();
-  fetchLogs().then((data) => {  
+  fetchLogs().then((data) => {
     if (!data?.message) {
       updateLogs(data);
     }
@@ -47,13 +52,11 @@ async function handleRefreshButtonClick() {
 }
 
 async function handleAuthInputChange() {
-  AUTH_KEY = auth_input.value;
-  setAuthKey(AUTH_KEY);
+  updateKey();
 }
 
 function handleAuthInputFocusOut() {
-  AUTH_KEY = auth_input.value;
-  setAuthKey(AUTH_KEY);
+  updateKey();
   AuthInputCloseAnimation();
 }
 
@@ -61,8 +64,7 @@ function handleAuthInputKeydown(e) {
   const INPUT_KEYS = ["Enter", "Escape"];
 
   if (INPUT_KEYS.includes(e.key)) {
-    AUTH_KEY = auth_input.value;
-    setAuthKey(AUTH_KEY);
+    updateKey();
     AuthInputCloseAnimation();
   }
 }
@@ -83,4 +85,9 @@ async function fetchLogs() {
   });
 
   return data;
+}
+
+async function updateKey() {
+  AUTH_KEY = auth_input.value;
+  setAuthKey(AUTH_KEY);
 }

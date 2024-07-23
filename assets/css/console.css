@@ -50,6 +50,7 @@ html {
 }
 
 p {
+  user-select: none;
   margin: 10px;
   color: var(--secondary-color);
   font-size: 1rem;
@@ -122,10 +123,20 @@ p {
   border-color: var(--secondary-color);
   background-color: #155e4c;
 }
-/* Auth status text */
-#auth_status {
+.bottom-bar {
   width: 100%;
-  color: #fbff00;
-  font-size: 11px;
-  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Auth status text */
+.bottom-bar #auth_status {
+  padding: 5px;
+  background-color: #2b0009;
+  border-radius: 5px;
+  display: none;
+  user-select: none;
+  color: #d64949;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
 }

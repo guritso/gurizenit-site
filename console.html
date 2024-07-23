@@ -10,20 +10,23 @@
     <div class="top-bar">
       <p id="lines_count">0</p>
       <div class="right-buttons">
-        <p id="auth_status"></p>
         <input
-          type="password"
-          id="auth_input"
-          placeholder="authenticator key"
-          style="display: none"
+        type="password"
+        id="auth_input"
+        placeholder="authenticator key"
+        style="display: none"
         />
         <a id="lock_button" class="material-symbols-outlined">lock</a>
         <a id="refresh_button" class="material-symbols-outlined">refresh</a>
       </div>
     </div>
     <div id="console-container">
-      <div id="empty_logs">(ಥ _ ಥ)<br />empty</div>
+      <div id="empty_logs">(ಥ _ ಥ)<br />empty </div>
     </div>
+    <div class="bottom-bar">
+      <div id="auth_status" style="display: none"></div>
+    </div>
+
     <script type="module" src="../assets/js/console.js"></script>
   </body>
 </html>
