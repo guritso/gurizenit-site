@@ -1,4 +1,4 @@
-const container = document.querySelector(".container");
+const container = document.getElementById("console-container");
 const lines_count = document.getElementById("lines_count");
 const empty_logs = document.getElementById("empty_logs");
 

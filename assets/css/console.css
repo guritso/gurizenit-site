@@ -55,7 +55,7 @@ p {
   font-size: 1rem;
 }
 /* Text log that is displayed in the console */
-.container div {
+#console-container div {
   font-family: "Courier New", Courier, monospace;
   font-size: 1rem;
   margin: 0;
@@ -64,7 +64,7 @@ p {
   color: var(--primary-color);
 }
 /* Text that is displayed when there are no logs */
-#empty_logs {
+#console-container #empty_logs {
   user-select: none;
   font-family: "Courier New", Courier, monospace;
   color: var(--secondary-color);
@@ -125,9 +125,7 @@ p {
 /* Auth status text */
 #auth_status {
   width: 100%;
-  text-shadow: 1px 1px 1px #5f3f3f;
-  font-family: cursive;
-  color: #c24747;
-  font-size: 0.8rem;
+  color: #fbff00;
+  font-size: 11px;
   margin: 10px;
 }
