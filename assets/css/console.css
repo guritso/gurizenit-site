@@ -95,11 +95,11 @@ p {
 }
 
 .material-symbols-outlined:hover {
-  color: #50a786;
+  color: #50a786 !important;
 }
 
 .material-symbols-outlined:active {
-  color: #8df3cc;
+  color: #8df3cc !important;
 }
 
 /* Text input for auth */
