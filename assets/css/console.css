@@ -121,8 +121,14 @@ p {
 #auth_input:focus {
   outline: none;
   border-color: var(--secondary-color);
-  background-color: #155e4c;
+  background-color: #155e4c !important;
 }
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px #155e4c inset;
+  -webkit-text-fill-color: var(--secondary-color);
+}
+
 .bottom-bar {
   width: 100%;
   display: flex;
