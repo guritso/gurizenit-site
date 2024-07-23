@@ -102,10 +102,9 @@ p {
   color: #8df3cc !important;
 }
 
-#sync_button {
-  cursor:auto;
+#sync_status {
+  cursor: auto;
   color: #00ff00 !important;
-
 }
 
 /* Text input for auth */
