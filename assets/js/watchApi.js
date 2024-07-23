@@ -18,6 +18,8 @@ const watchApi = () => {
       token: AUTH_KEY,
     });
 
+    lock_button.style.color = "#e0e0e0";
+
     if (data.logs) {
       updateLogs(data);
       lock_button.style.color = "#00ff00";
@@ -43,7 +45,7 @@ const watchApi = () => {
         );
       }
 
-      if (data.status == 500) return;
+      if (data.status !== 401) return;
 
       lock_button.style.color = "#d64949";
       lock_button.animate(
