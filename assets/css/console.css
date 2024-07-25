@@ -153,3 +153,6 @@ input:-webkit-autofill {
   margin-bottom: 10px;
 }
 
+.highlight-error {
+  color: rgb(153, 38, 82);
+}

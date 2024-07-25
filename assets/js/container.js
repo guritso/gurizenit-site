@@ -5,11 +5,16 @@ const empty_logs = document.getElementById("empty_logs");
 const oldLogs = [];
 const EMPTY_LOGS_TEXT = "(ಥ _ ಥ)\nempty";
 
+const highlightKeywords = (text) => {
+  return text.replace(/(Error:)/g, '<span class="highlight-error">$1</span>');
+};
+
 const writeLogs = (newLogs) => {
   newLogs.forEach((log) => {
     const div = document.createElement("div");
     div.classList.add("container_logs");
-    div.textContent = log;
+
+    div.innerHTML = highlightKeywords(log);
     container.appendChild(div);
 
     container.scrollTop = container.scrollHeight;
