@@ -57,6 +57,7 @@ p {
 }
 /* Text log that is displayed in the console */
 #console-container div {
+  position: relative;
   font-family: "Courier New", Courier, monospace;
   font-size: 1rem;
   margin: 0;
@@ -67,6 +68,7 @@ p {
 }
 /* Text that is displayed when there are no logs */
 #console-container #empty_logs {
+  position:absolute;
   user-select: none;
   font-family: "Courier New", Courier, monospace;
   color: var(--secondary-color);
