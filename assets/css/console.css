@@ -63,6 +63,7 @@ p {
   line-height: 1.3;
   display: inline;
   color: var(--primary-color);
+  white-space: pre-wrap;
 }
 /* Text that is displayed when there are no logs */
 #console-container #empty_logs {
@@ -151,3 +152,4 @@ input:-webkit-autofill {
   font-size: 0.8rem;
   margin-bottom: 10px;
 }
+
