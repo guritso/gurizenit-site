@@ -13,7 +13,7 @@ const setAuthKey = (authKey) => {
 };
 
 const watchApi = () => {
-  setInterval(async () => {
+  const fetchData = async () => {
     const data = await apiFetch.get({
       endpoint: "logs",
       token: AUTH_KEY,
@@ -22,7 +22,7 @@ const watchApi = () => {
     lock_button.style.color = "#e0e0e0";
 
     if (data.logs) {
-      updateLogs(data);
+      await updateLogs(data);
       lock_button.style.color = "#00ff00";
       sync_status.style.display = "block";
 
@@ -65,7 +65,11 @@ const watchApi = () => {
         200
       );
     }
-  }, INTERVAL);
+
+  };
+  
+  setInterval(fetchData, INTERVAL);
+
 };
 
 export { watchApi, setAuthKey };

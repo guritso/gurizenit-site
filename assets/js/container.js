@@ -9,8 +9,8 @@ const highlightKeywords = (text) => {
   return text.replace(/(Error:)/g, '<span class="highlight-error">$1</span>');
 };
 
-const writeLogs = (newLogs) => {
-  newLogs.forEach((log) => {
+const writeLogs = async (newLogs) => {
+  for await (const log of newLogs) {
     const div = document.createElement("div");
     div.classList.add("container_logs");
 
@@ -21,13 +21,13 @@ const writeLogs = (newLogs) => {
     lines_count.textContent = container.children.length;
     empty_logs.textContent =
       container.children.length === 0 ? EMPTY_LOGS_TEXT : "";
-  });
+  }
 };
 
-const updateLogs = ({ logs }) => {
-  const newLogs = logs.filter((log, index) => oldLogs[index] !== log);
+const updateLogs = async ({ logs }) => {
+  const newLogs = await logs.filter((log, index) => oldLogs[index] !== log);
 
-  writeLogs(newLogs);
+  await writeLogs(newLogs);
   oldLogs.push(...newLogs);
 };
 
